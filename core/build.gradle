@@ -31,23 +31,40 @@ dependencies {
     // Kotlin and standard libraries
     api KotlinLibs.kotlinStdLib
     api KotlinLibs.kotlinCore
+    api KotlinLibs.kotlinCoroutine
 
     // Android UI and design libraries
     api UILibs.appCompat
     api UILibs.materialCompat
     api UILibs.constraintLayout
 
-    // Testing Libs
-    testApi TestLibs.junit
-    androidTestApi TestLibs.androidxTest
-    androidTestApi TestLibs.espresso
+
+    // Mock server
+    api TestLibs.mockWebServer
 
 
     // Network
     api Network.retrofit
     api Network.converterGson
+    api Network.httpLoggingInterceptor
 
     // Dependency injection
     api DI.dagger
+    api DI.daggerAndroidSupport
+    api DI.daggerAndroid
     kapt DI.daggerCompiler
+
+    // Architecture components ktx extensions
+    api LifeCycleKtxExtensions.viewModelScope
+    api LifeCycleKtxExtensions.liveData
+    api LifeCycleKtxExtensions.lifeCycleScope
+
+    // Architecture components
+    api ArchitectureComponent.paging3
+
+    // Glide
+    api Glide.glide
+
+
 }
+

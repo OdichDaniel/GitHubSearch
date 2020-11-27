@@ -1,6 +1,7 @@
 package com.safeboda.android.core.di
 
 import android.content.Context
+import com.google.gson.Gson
 import com.safeboda.android.core.di.modules.CoreModule
 import dagger.Component
 import retrofit2.Retrofit
@@ -12,6 +13,8 @@ import javax.inject.Singleton
 interface CoreComponent {
 
     fun provideContext(): Context
+
+    fun provideGson(): Gson
 
     @Named("cachingRetrofit")
     fun provideCachingRetrofit(): Retrofit

@@ -1,6 +1,7 @@
 package com.safeboda.android.core.di.modules
 
 import android.content.Context
+import com.google.gson.Gson
 import com.safeboda.android.core.utils.Constants
 import com.safeboda.android.core.utils.RetrofitClient
 import dagger.Module
@@ -18,6 +19,12 @@ class CoreModule (val context: Context){
     fun provideContext(): Context{
 
         return context
+    }
+
+    @Provides
+    fun provideGson(): Gson{
+
+        return Gson()
     }
 
     @Provides

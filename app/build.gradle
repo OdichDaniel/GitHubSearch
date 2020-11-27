@@ -30,6 +30,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    // Enable data binding
+    dataBinding{
+
+        enabled = true
+    }
 }
 
 dependencies {
@@ -40,13 +46,23 @@ dependencies {
     implementation project(path: ':core')
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
+
+    // Testing Libs
+    testApi TestLibs.junit
+    androidTestApi TestLibs.androidxTestCore
+    androidTestApi TestLibs.androidxTest
+    androidTestApi TestLibs.espresso
+    androidTestApi TestLibs.espressoIntent
+    androidTestApi TestLibs.testRunner
+    androidTestApi TestLibs.testRules
 
     // We need dagger annotation processing here
     kapt DI.daggerCompiler
     kapt DI.daggerAndroidProcessor
     implementation DI.daggerAndroidSupport
+
+
+    // Glide annotation processor
+    kapt Glide.annotationProcessor
 
 }

@@ -1,6 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"></androidx.constraintlayout.widget.ConstraintLayout>
+<layout>
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.safeboda.android.viewmodels.SearchActivityViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/userContainer"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:indeterminate="true"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:visibility="@{viewModel.showProgressBar ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/parent_view_padding"
+            android:visibility="@{viewModel.showProfileContainer ? View.VISIBLE : View.GONE}"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar"
+            app:layout_constraintStart_toStartOf="parent">
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="@dimen/avatar_iv_size"
+                android:layout_height="@dimen/avatar_iv_size"
+                android:id="@+id/avatarIv"
+                app:loadAvatar="@{viewModel.userMutableLiveData.avatar_url}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/nameTv"
+                android:layout_marginLeft="8dp"
+                android:text="@{viewModel.userMutableLiveData.name}"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintTop_toTopOf="@+id/avatarIv"
+                app:layout_constraintStart_toEndOf="@+id/avatarIv"
+                app:layout_constraintEnd_toStartOf="@+id/arrowIv"/>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/bioTv"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@{viewModel.userMutableLiveData.bio == null ? `` : viewModel.userMutableLiveData.bio}"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintTop_toBottomOf="@+id/nameTv"
+                app:layout_constraintStart_toEndOf="@+id/avatarIv"
+                app:layout_constraintEnd_toStartOf="@+id/arrowIv"/>
+
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/arrowIv"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_arrow_top_left"
+                app:layout_constraintTop_toTopOf="@+id/avatarIv"
+                app:layout_constraintBottom_toBottomOf="@+id/avatarIv"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

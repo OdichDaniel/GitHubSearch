@@ -1,8 +1,10 @@
 package com.safeboda.android.core.utils
 
 import android.content.Context
+import android.util.Log
 import okhttp3.Cache
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
@@ -15,6 +17,8 @@ class RetrofitClient {
 
     private lateinit var context: Context
     private var cacheResponse: Boolean = false
+
+    private val LOG_TAG = "log_tag"
 
     /**
      * @param baseUrl, base url required by retrofit
@@ -48,6 +52,17 @@ class RetrofitClient {
             okHttpClientBuilder.cache(cache)
         }
 
+        okHttpClientBuilder.addNetworkInterceptor(httpLoggingInterceptor)
+
         return okHttpClientBuilder.build()
     }
+
+
+    private val httpLoggingInterceptor = HttpLoggingInterceptor(object: HttpLoggingInterceptor.Logger{
+
+        override fun log(message: String) {
+
+            Log.d(LOG_TAG, message)
+        }
+    })
 }

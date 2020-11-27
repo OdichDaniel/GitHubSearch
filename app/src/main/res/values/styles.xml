@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -15,5 +16,26 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+
+        <item name="searchHintIcon">@null</item>
+        <item name="queryBackground">@null</item>
+        <item name="android:maxWidth">1000dp</item>
+
+    </style>
+
+    <style name="ToolbarStyle" parent="AppTheme.NoActionBar">
+
+        <item name="android:editTextColor">@color/colorBlack</item>
+        <item name="android:textColorHint">@color/colorGray</item>
+        <item name="drawerArrowStyle">@style/NavigationDrawerArrowToggle</item>
+
+    </style>
+
+    <style name="NavigationDrawerArrowToggle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/colorBlack</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
 </resources>

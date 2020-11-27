@@ -1,6 +1,6 @@
 package com.safeboda.android.di.modules
 
-import com.safeboda.android.ui.activities.MainActivity
+import com.safeboda.android.ui.activities.SearchActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -8,5 +8,5 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityBuildersModule {
 
     @ContributesAndroidInjector
-    abstract fun contributesMainActivity(): MainActivity
+    abstract fun contributesSearchActivity(): SearchActivity
 }
