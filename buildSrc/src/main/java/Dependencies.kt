@@ -97,12 +97,21 @@ object ArchitectureComponent{
 }
 
 // Glide for image loading
-val glide_version = "4.11.0"
+private val glide_version = "4.11.0"
 
 object Glide{
 
     val glide = "com.github.bumptech.glide:glide:${glide_version}"
     val annotationProcessor = "com.github.bumptech.glide:compiler:${glide_version}"
 }
+
+// Parceler
+private val parceler_version = "1.1.12"
+object Parceler{
+
+    val parceler = "org.parceler:parceler-api:${parceler_version}"
+    val parcelerAnnotationProcessor = "org.parceler:parceler:${parceler_version}"
+}
+
 
 

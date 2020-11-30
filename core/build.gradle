@@ -65,6 +65,9 @@ dependencies {
     // Glide
     api Glide.glide
 
+    // Parceler, Kotlin Parcelize does not work well with inheritance
+    api Parceler.parceler
+
 
 }
 

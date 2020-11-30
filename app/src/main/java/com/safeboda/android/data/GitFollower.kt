@@ -1,7 +1,12 @@
 package com.safeboda.android.data
 
-import kotlinx.android.parcel.Parcelize
+import org.parceler.Parcel
 
 // Git follower following on Github
-@Parcelize
-class GitFollower: User()
+@Parcel
+class GitFollower: User(){
+
+    override fun toString(): String {
+        return "avatar_url=${avatar_url}"
+    }
+}

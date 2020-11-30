@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="androidx.paging.LoadState"/>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="loadSate"
+            type="androidx.paging.LoadState" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/error_msg"
+            android:textColor="?android:textColorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            tools:text="Timeout"/>
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/progress_bar"
+            android:layout_gravity="center"
+            style="?android:attr/progressBarStyle"/>
+
+        <Button
+            android:id="@+id/retry_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/retry"/>
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Recycler view item for follower recyclerview-->
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="gitFollower"
+            type="com.safeboda.android.data.GitFollower" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/parent_view_padding">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/avatarIv"
+            app:loadAvatar="@{gitFollower.avatar_url}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{gitFollower.login}"
+            android:textColor="@color/colorGray"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/parent_view_padding"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/avatarIv"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

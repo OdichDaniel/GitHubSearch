@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.content_search.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.parceler.Parcels
 import javax.inject.Inject
 
 class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
@@ -56,7 +57,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         userContainer.setOnClickListener {
 
             val intent  = Intent(this, UserDetailActivity::class.java)
-            intent.putExtra(Constants.USER, viewModel.userMutableLiveData.value)
+            intent.putExtra(Constants.USER, Parcels.wrap(viewModel.user))
 
             startActivity(intent)
         }
@@ -89,6 +90,7 @@ class SearchActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     override fun onQueryTextChange(newText: String?): Boolean {
 
         // Cancel any previous pending jobs
+
         submitQueryJob?.cancel()
 
         submitQueryJob = lifecycleScope.launch{

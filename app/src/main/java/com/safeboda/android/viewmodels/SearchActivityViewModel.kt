@@ -1,12 +1,8 @@
 package com.safeboda.android.viewmodels
 
-import android.util.Log
-import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bumptech.glide.Glide
-import com.google.android.material.imageview.ShapeableImageView
 import com.safeboda.android.data.GitHubUser
 import com.safeboda.android.data.repository.UserRepository
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -27,6 +23,8 @@ class SearchActivityViewModel @Inject constructor(val userRepository: UserReposi
     // Show user profile container
     val showProfileContainer = MutableLiveData<Boolean>()
 
+    var user: GitHubUser? = null
+
     // Get user by name
     fun getUserByName(userName: String){
 
@@ -46,9 +44,9 @@ class SearchActivityViewModel @Inject constructor(val userRepository: UserReposi
 
             if(response.userFound){
 
-                Log.d("flutterwave", "User found:"+response.gitHubUser.toString())
-
                 showProfileContainer.postValue(true)
+
+                user = response.gitHubUser
                 userMutableLiveData.postValue(response.gitHubUser)
             }
         }
@@ -56,7 +54,8 @@ class SearchActivityViewModel @Inject constructor(val userRepository: UserReposi
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler{_, throwable ->
 
-        Log.d("flutterwave", "Error:"+throwable.message)
+        // Hide progressbar
+        showProgressBar.postValue(false)
     }
 
 

@@ -4,7 +4,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
 
-object BindingAdapters {
+object DataBindingAdapters {
 
     @JvmStatic
     @BindingAdapter("loadAvatar")

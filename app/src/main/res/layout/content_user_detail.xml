@@ -1,34 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ui.activities.UserDetailActivity"
-    tools:showIn="@layout/activity_user_detail">
+<layout>
 
+    <data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+        <variable
+            name="user"
+            type="com.safeboda.android.data.GitHubUser" />
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/nestedScrollView"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".ui.activities.UserDetailActivity"
+        tools:showIn="@layout/activity_user_detail">
 
-        <com.google.android.material.tabs.TabLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/tabLayout"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="parent"/>
 
-        <androidx.viewpager.widget.ViewPager
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/viewPager"
-            app:layout_constraintTop_toBottomOf="@+id/tabLayout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/detailBioTv"
+                android:padding="@dimen/parent_view_padding"
+                android:text="@{user.bio}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
-</androidx.core.widget.NestedScrollView>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/myButton"
+                android:text="Click"
+                app:layout_constraintTop_toBottomOf="@+id/detailBioTv"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

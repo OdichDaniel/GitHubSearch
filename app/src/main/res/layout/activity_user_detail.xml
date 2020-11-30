@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -36,7 +36,7 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     android:src="@mipmap/ic_launcher"
                     app:loadAvatar="@{user.avatar_url}"/>
 
@@ -50,7 +50,8 @@
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <include layout="@layout/content_user_detail" />
+        <include layout="@layout/content_user_detail"
+            bind:user="@{user}"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

@@ -44,8 +44,6 @@ dependencies {
 
     // core module dependency
     implementation project(path: ':core')
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.2.1'
 
     // Testing Libs
     testApi TestLibs.junit
@@ -64,5 +62,8 @@ dependencies {
 
     // Glide annotation processor
     kapt Glide.annotationProcessor
+
+    // Parceler annotation processor
+    kapt Parceler.parcelerAnnotationProcessor
 
 }

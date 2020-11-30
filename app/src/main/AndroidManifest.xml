@@ -12,9 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ui.activities.FollowingActivity"
+            android:label="@string/title_activity_following"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".ui.activities.UserDetailActivity"
             android:label="@string/title_activity_user_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.activities.SearchActivity"
             android:label="@string/title_activity_search"

@@ -1,13 +1,11 @@
 package com.safeboda.android.data
 
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import org.parceler.ParcelConstructor
 
 /**
  * This class represents a git user
  */
-@Parcelize
-open class User(
+open class User @ParcelConstructor constructor(
     open var avatar_url: String? = null,
     open var events_url: String? = null,
     open var followers_url: String? = null,
@@ -26,4 +24,4 @@ open class User(
     open var subscriptions_url: String? = null,
     open var type: String? = null,
     open var url: String? = null
-): Parcelable
+)

@@ -3,7 +3,9 @@ package com.safeboda.android.core.utils
 import android.content.Context
 import android.util.Log
 import okhttp3.Cache
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -43,6 +45,7 @@ class RetrofitClient {
 
         val okHttpClientBuilder = OkHttpClient.Builder()
 
+        // If we must cache
         if (cacheResponse) {
 
             val httpCacheDirectory = File(context.getCacheDir(), "http-cache")
@@ -50,9 +53,33 @@ class RetrofitClient {
             val cache = Cache(httpCacheDirectory, cacheSize)
 
             okHttpClientBuilder.cache(cache)
+
+            okHttpClientBuilder.addInterceptor(object: Interceptor{
+                override fun intercept(chain: Interceptor.Chain): Response {
+
+                    val request = chain.request().newBuilder()
+                        .header("Cache-Control",
+                            "public, only-if-cached, max-stale=" + 2419200)
+                        .build();
+
+                    val response = chain.proceed(request)
+
+                    // Add offline caching headers
+
+                    return response.newBuilder()
+                        .removeHeader("Pragma")
+                        .removeHeader("Cache-Control")
+
+                            // Cache for seven days
+                        .addHeader("Cache-Control", "public, max-age=" + 60 * 60 * 24 * 7)
+                        .build()
+                }
+
+            })
         }
 
-        okHttpClientBuilder.addNetworkInterceptor(httpLoggingInterceptor)
+        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+        okHttpClientBuilder.addInterceptor(httpLoggingInterceptor)
 
         return okHttpClientBuilder.build()
     }
